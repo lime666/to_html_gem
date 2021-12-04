@@ -1,33 +1,24 @@
 class Html
 
-def to_html(content, bypass_html: true)
-  @content = content
-  @paste << "<p>@content.gsub(/^[а-яА-Я ]*$/)</p>"
+def to_html(content, html_file = 'index.html')
+  paste = content.gsub(/^[а-яА-Я ]*$/, '')
     
-  @html = <<HTML
-    <! doctype html>
-
-    <html lang="en">
-    <head>
-    <meta charset="utf-8">
-
-    <title></title>
-    </head>
-
-    <body>
-      #{@paste}
-    </body>
-    </html>
-HTML
-
-  @html_file = File.open('index.html', w) {|f| f.write @html }
-  @html_file.close
+  html_file = File.new('index.html', "w+")
+  html_file.puts "<!DOCTYPE html>"
+  html_file.puts "  <head>"
+  html_file.puts "    <meta charset='utf-8'>"
+  html_file.puts "    <title>My Tamago</title>"
+  html_file.puts "  </head>"
+  html_file.puts "  <body>"
+  html_file.puts "    #{paste}"
+  html_file.puts "  </body>"
+  html_file.puts "</html>"
+  html_file.close
 
 end
 
 def open_html(html_file = 'index.html')
-  to_html    
-  system("xdg-open #{@html_file}")
+  system("xdg-open #{html_file}")
 end
 
 end
