@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'to_html_gem'
-  s.version     = '0.0.13'
+  s.version     = '0.0.14'
   s.summary     = "text to html"
   s.description = "Transforming text files to html"
   s.authors     = ["Yulia Lime"]
