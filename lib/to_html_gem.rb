@@ -1,7 +1,6 @@
 class Html
-  def to_html(content, html_file = 'index.html')
-    bypass_html: true
-    @paste = @content.gsub(/^[а-яА-Я ]*$/, '')
+  def to_html(content, bypass_html = true, html_file = 'index.html')
+    @paste = @content.gsub(/^[а-яА-Я ]*$/, '') if bypass_html
     
     html_file = File.new('index.html', "w+")
     html_file.puts "<!DOCTYPE html>"
